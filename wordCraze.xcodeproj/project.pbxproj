@@ -12,9 +12,14 @@
 		87A26A712027ED4500ACEE01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A26A6F2027ED4500ACEE01 /* Main.storyboard */; };
 		87A26A732027ED4500ACEE01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87A26A722027ED4500ACEE01 /* Assets.xcassets */; };
 		87A26A762027ED4500ACEE01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87A26A742027ED4500ACEE01 /* LaunchScreen.storyboard */; };
+		87A26A80202BFA1800ACEE01 /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 87A26A7F202BFA1800ACEE01 /* words.txt */; };
+		E2DDA946F8E5821D08D7A042 /* Pods_wordCraze.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8C8636C0E095B2416C304E /* Pods_wordCraze.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		268C74981F9BCB9FBC30ADFA /* Pods-wordCraze.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wordCraze.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wordCraze/Pods-wordCraze.debug.xcconfig"; sourceTree = "<group>"; };
+		5B8C8636C0E095B2416C304E /* Pods_wordCraze.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wordCraze.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74ED09EBA92F65CF3C4F5AF8 /* Pods-wordCraze.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wordCraze.release.xcconfig"; path = "Pods/Target Support Files/Pods-wordCraze/Pods-wordCraze.release.xcconfig"; sourceTree = "<group>"; };
 		87A26A682027ED4500ACEE01 /* wordCraze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordCraze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A26A6B2027ED4500ACEE01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87A26A6D2027ED4500ACEE01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		87A26A722027ED4500ACEE01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87A26A752027ED4500ACEE01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87A26A772027ED4500ACEE01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87A26A7F202BFA1800ACEE01 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2DDA946F8E5821D08D7A042 /* Pods_wordCraze.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				87A26A6A2027ED4500ACEE01 /* wordCraze */,
 				87A26A692027ED4500ACEE01 /* Products */,
+				A2B3FE5DEF5AD44B10D8658D /* Pods */,
+				F148B123648B7E72075A710F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				87A26A722027ED4500ACEE01 /* Assets.xcassets */,
 				87A26A742027ED4500ACEE01 /* LaunchScreen.storyboard */,
 				87A26A772027ED4500ACEE01 /* Info.plist */,
+				87A26A7F202BFA1800ACEE01 /* words.txt */,
 			);
 			path = wordCraze;
+			sourceTree = "<group>";
+		};
+		A2B3FE5DEF5AD44B10D8658D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				268C74981F9BCB9FBC30ADFA /* Pods-wordCraze.debug.xcconfig */,
+				74ED09EBA92F65CF3C4F5AF8 /* Pods-wordCraze.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F148B123648B7E72075A710F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B8C8636C0E095B2416C304E /* Pods_wordCraze.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87A26A7A2027ED4500ACEE01 /* Build configuration list for PBXNativeTarget "wordCraze" */;
 			buildPhases = (
+				FA672E92EE747355EDB79E94 /* [CP] Check Pods Manifest.lock */,
 				87A26A642027ED4500ACEE01 /* Sources */,
 				87A26A652027ED4500ACEE01 /* Frameworks */,
 				87A26A662027ED4500ACEE01 /* Resources */,
+				428002D6831AED20770EC033 /* [CP] Embed Pods Frameworks */,
+				C46A14E0CDC4C7D316DE4092 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,11 +155,68 @@
 			files = (
 				87A26A762027ED4500ACEE01 /* LaunchScreen.storyboard in Resources */,
 				87A26A732027ED4500ACEE01 /* Assets.xcassets in Resources */,
+				87A26A80202BFA1800ACEE01 /* words.txt in Resources */,
 				87A26A712027ED4500ACEE01 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		428002D6831AED20770EC033 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-wordCraze/Pods-wordCraze-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-wordCraze/Pods-wordCraze-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C46A14E0CDC4C7D316DE4092 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-wordCraze/Pods-wordCraze-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA672E92EE747355EDB79E94 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wordCraze-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		87A26A642027ED4500ACEE01 /* Sources */ = {
@@ -272,6 +359,7 @@
 		};
 		87A26A7B2027ED4500ACEE01 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 268C74981F9BCB9FBC30ADFA /* Pods-wordCraze.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +375,7 @@
 		};
 		87A26A7C2027ED4500ACEE01 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74ED09EBA92F65CF3C4F5AF8 /* Pods-wordCraze.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
