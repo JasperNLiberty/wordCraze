@@ -17,17 +17,23 @@ class ViewController: UIViewController {
     var playerItem:AVPlayerItem?
     var wordArray: [String]?
     
+    let tunnelURL = "http://635e10cc.ngrok.io"
+    
     @IBOutlet weak var currentWordLabel: UILabel!
     @IBOutlet weak var sen1: UILabel!
     @IBOutlet weak var sen2: UILabel!
     @IBOutlet weak var sen3: UILabel!
     
     @IBAction func generateRandomNewWord(_ sender: Any) {
-//        let randomId = Int(arc4random_uniform(UInt32(wordArray!.count)))
-//        let newWord:String = wordArray![randomId]
-//        currentWordLabel.text = newWord
+        let randomId = Int(arc4random_uniform(UInt32(wordArray!.count)))
+        let newWord:String = wordArray![randomId]
+        currentWordLabel.text = newWord
+        
+        readWord(word: newWord)
+        getSen(word: newWord)
+        
 //        getSen(word: newWord)
-        serveRandomWord()
+//        serveRandomWord()
     }
     
     override func viewDidLoad() {
@@ -36,7 +42,7 @@ class ViewController: UIViewController {
         
         do {
             // This solution assumes  you've got the file in your bundle
-            if let path = Bundle.main.path(forResource: "words", ofType: "txt"){
+            if let path = Bundle.main.path(forResource: "words3", ofType: "txt"){
                 let data = try String(contentsOfFile:path, encoding: String.Encoding.utf8)
                 wordArray = data.components(separatedBy: "\n")
             }
@@ -53,54 +59,35 @@ class ViewController: UIViewController {
     }
 
 
-    func getSen(word: String) {
-        let appId = "e28c1363"
-        let appKey = "1b7bf2d9b08c9a6de6f1041bd2131cfe"
-        let language = "en"
-        let word = word
-        let word_id = word.lowercased() //word id is case sensitive and lowercase is required
-        let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(word_id)/sentences")!
+    func getSen(word: String) -> Void {
         
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue(appId, forHTTPHeaderField: "app_id")
-        request.addValue(appKey, forHTTPHeaderField: "app_key")
+        let url = URL(string: tunnelURL + "/retrieveSen" + "?word=" + word)!
         
-        let session = URLSession.shared
-        
-        _ = session.dataTask(with: request, completionHandler: { data, response, error in
-            if let response = response,
-                let data = data
-            {
-                let f = JSON(data)
-                let s1 = f["results"][0]["lexicalEntries"][0]["sentences"][0]["text"].rawString()!
-                let s2 = f["results"][0]["lexicalEntries"][0]["sentences"][1]["text"].rawString()!
-                let s3 = f["results"][0]["lexicalEntries"][0]["sentences"][2]["text"].rawString()!
-                
-                DispatchQueue.main.async {
-                    if s1 != "null" {
-                        self.sen1.text = s1
-                    }
-                    if s2 != "null" {
-                        self.sen2.text = s2
-                    }
-                    if s3 != "null" {
-                        self.sen3.text = s3
-                    }
+        Alamofire.request(url, method: .get)
+            .responseJSON { response in
+                if response.result.isSuccess {
+                    
+                    let resDictionary = response.result.value! as! NSDictionary
+                    let senCol = resDictionary["senCol"]! as! [String]
+                    
+                    self.sen1.text = senCol[0]
+                    self.sen2.text = senCol[1]
+                    self.sen3.text = senCol[2]
+                    
+                    
+                } else {
+                    print("Error: \(String(describing: response.result.error))")
                 }
-                
-            } else {
-                print(error)
-                print(NSString.init(data: data!, encoding: String.Encoding.utf8.rawValue))
-            }
-        }).resume()
+        }
         
     }
     
-    func serveRandomWord() {
+    
+    
+    func readWord(word: String) -> Void {
         
-        let url = URL(string: "http://0.0.0.0:7000/serveRandomWord")!
-        
+        let url = URL(string: tunnelURL + "/retrieveMp3" + "?word=" + word)!
+
         Alamofire.request(url, method: .get)
             .responseJSON { response in
                 if response.result.isSuccess {
@@ -111,15 +98,13 @@ class ViewController: UIViewController {
                     self.player = AVPlayer(playerItem: playerItem)
                     self.player!.play()
                     
-                    let word = resDictionary["word"]
-                    self.currentWordLabel.text = word as! String
-                    
                 } else {
                     print("Error: \(String(describing: response.result.error))")
                 }
         }
-        
     }
+    
+    
 }
 
 
